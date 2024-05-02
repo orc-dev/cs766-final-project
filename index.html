@@ -1,17 +1,612 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CS766 Project</title>
-    <!-- Add any additional meta tags, CSS links, or other header content here -->
-</head>
-<body>
-    <!-- Your webpage content goes here -->
-    <h1>Welcome to Our CS 766 Group Project Website!</h1>
-    <p>This is a blank template for your website. You can add your content here.</p>
 
-    <!-- Add any additional HTML content, scripts, etc. here -->
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>CS766 2024 Spring Final Project</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Regna
+  * Template URL: https://bootstrapmade.com/regna-bootstrap-onepage-template/
+  * Updated: Mar 17 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center header-transparent">
+    <div class="container d-flex justify-content-between align-items-center">
+
+    <!-- student_added: comment out REGNA logo
+      <div id="logo">
+        <a href="index.html"><img src="assets/img/logo.png" alt=""></a>
+        <!~~ Uncomment below if you prefer to use a text logo ~~>
+        <!~~<h1><a href="index.html">Regna</a></h1>~~>
+      </div>
+    -->
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="#introduction">Introduction</a></li>
+          <li><a class="nav-link scrollto " href="#dea">Data Exploratory</a></li>
+          <li><a class="nav-link scrollto" href="#team">Segmentation</a></li>
+          <li><a class="nav-link scrollto" href="#team">Hand Gesture</a></li>
+          <li><a class="nav-link scrollto" href="#keyframe">Keyframe</a></li>
+
+          <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="#">Drop Down 1</a></li>
+              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="#">Deep Drop Down 1</a></li>
+                  <li><a href="#">Deep Drop Down 2</a></li>
+                  <li><a href="#">Deep Drop Down 3</a></li>
+                  <li><a href="#">Deep Drop Down 4</a></li>
+                  <li><a href="#">Deep Drop Down 5</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Drop Down 2</a></li>
+              <li><a href="#">Drop Down 3</a></li>
+              <li><a href="#">Drop Down 4</a></li>
+            </ul>
+          </li> -->
+          <li><a class="nav-link scrollto" href="#conclusion">Conclusion</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
+      <h1>Exploratory Data Analysis and Baseline Feature Engineering for Educational Video Data</h1>
+      <!-- <h2>Gesture Chunk | Segmentation | Hand Gesture Detection | Keyframe Extraction</h2> -->
+      <a href="#about" class="btn-get-started" style="margin-top: 100px;">Get Started</a>
+    </div>
+  </section><!-- End Hero Section -->
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about">
+      <div class="container" data-aos="fade-up">
+        <div class="row about-container">
+
+          <div class="col-lg-6 content order-lg-1 order-2">
+            <h2 class="title">About This Project</h2>
+            <p>
+              This webpage displays the final project from course CS766 Computer Vision 2024 Spring at UW Madison. This project is a semester long group project that focuses on 
+            </p>
+
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+              <div class="icon"><i class="bi bi-briefcase"></i></div>
+              <h4 class="title"><a href="">Eiusmod Tempor</a></h4>
+              <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
+            </div>
+
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+              <div class="icon"><i class="bi bi-card-checklist"></i></div>
+              <h4 class="title"><a href="">Magni Dolores</a></h4>
+              <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+            </div>
+
+            <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
+              <div class="icon"><i class="bi bi-binoculars"></i></div>
+              <h4 class="title"><a href="">Dolor Sitema</a></h4>
+              <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+            </div>
+
+          </div>
+
+          <div class="col-lg-6 background order-lg-2 order-1" data-aos="fade-left" data-aos-delay="100"></div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Facts Section ======= -->
+    <!-- <section id="facts">
+      <div class="container" data-aos="fade-up">
+        <div class="section-header">
+          <h3 class="section-title">Facts</h3>
+          <p class="section-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+        </div>
+        <div class="row counters">
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Clients</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="534" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Projects</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Hours Of Support</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="42" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Hard Workers</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section> -->
+    <!-- End Facts Section -->
+
+    <!-- ======= Problem Statement Section ======= -->
+    
+    <section id="introduction">
+      <div class="container" data-aos="fade-up">
+        <div class="section-header">
+          <h3 class="section-title">Introduction</h3>
+          <h4 class="subtitle">Project Background</h4>
+          <p class="paragraph">This project aims to design tools to help educational researchers analyze video data. A growing body of educational research has demonstrated that gestures can predict mathematical thinking and performance (e.g., Abrahamson et al. 2020). Educational researchers conduct interventions to collect video data capturing students’ gestures as they solve mathematical problems. They focus mainly on identifying specific types of gestures, such as representational and dynamic gestures, which can predict students’ mathematical performance. However, they currently have to manually analyze these videos by repeatedly watching them, which can be very time-consuming and thus hampers the progress of their research. This project responds to the urgent need for reliable and automated analysis tools.</p>
+          <h4 class="subtitle">Problem Statement</h4>
+          <p class="paragraph">Extracting meaningful data from images and videos is a central task in computer vision. This task typically involves building and training machine learning or deep learning models. Specifically, our project targets a set of abstract gestures relevant to the educational domain. While existing tools can detect landmarks of the human body and hands in videos, the representation provided by this low-level data is not directly suitable for model development due to its complexity and abstraction from the high-level concepts needed. Given this, our project focuses on performing exploratory data analysis and establishing a baseline feature layer. This layer will bridge the gap between the low-level landmark data and the high-level requirements necessary for effective gesture analysis.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======= Call To Action Section ======= -->
+    <!-- <section id="call-to-action">
+      <div class="container">
+        <div class="row" data-aos="zoom-in">
+          <div class="col-lg-9 text-center text-lg-start">
+            <h3 class="cta-title">Call To Action</h3>
+            <p class="cta-text"> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          </div>
+          <div class="col-lg-3 cta-btn-container text-center">
+            <a class="cta-btn align-middle" href="#">Call To Action</a>
+          </div>
+        </div>
+
+      </div> -->
+    </section><!-- End Call To Action Section -->
+
+
+
+    <!-- ======= Exploratory Data Analysis Section ======= -->
+    <section id="dea">
+      <div class="container" data-aos="fade-up">
+        <div class="section-header">
+          <h3 class="section-title">Exploratory Data Anlaysis</h3>
+          <p class="paragraph">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+        </div>
+
+        <!-- <div class="row" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-lg-12 d-flex justify-content-center">
+            <ul id="portfolio-flters">
+              <li data-filter="*" class="filter-active">All</li>
+              <li data-filter=".filter-app">App</li>
+              <li data-filter=".filter-card">Card</li>
+              <li data-filter=".filter-web">Web</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>App 1</h4>
+              <p>App</p>
+              <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
+              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <img src="assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Web 3</h4>
+              <p>Web</p>
+              <a href="assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
+              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <img src="assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>App 2</h4>
+              <p>App</p>
+              <a href="assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 2"><i class="bx bx-plus"></i></a>
+              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <img src="assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Card 2</h4>
+              <p>Card</p>
+              <a href="assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 2"><i class="bx bx-plus"></i></a>
+              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <img src="assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Web 2</h4>
+              <p>Web</p>
+              <a href="assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 2"><i class="bx bx-plus"></i></a>
+              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+            <img src="assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>App 3</h4>
+              <p>App</p>
+              <a href="assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 3"><i class="bx bx-plus"></i></a>
+              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <img src="assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Card 1</h4>
+              <p>Card</p>
+              <a href="assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 1"><i class="bx bx-plus"></i></a>
+              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <img src="assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Card 3</h4>
+              <p>Card</p>
+              <a href="assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 3"><i class="bx bx-plus"></i></a>
+              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web">
+            <img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Web 3</h4>
+              <p>Web</p>
+              <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
+              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+            </div>
+          </div> -->
+
+        </div>
+
+      </div>
+    </section><!-- End Portfolio Section -->
+
+    <!-- ======= Team Section ======= -->
+    <section id="team">
+      <div class="container" data-aos="fade-up">
+        <div class="section-header">
+          <h3 class="section-title">Team</h3>
+          <p class="section-description">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 col-md-6">
+            <div class="member" data-aos="fade-up" data-aos-delay="100">
+              <div class="pic"><img src="assets/img/team-1.jpg" alt=""></div>
+              <h4>Walter White</h4>
+              <span>Chief Executive Officer</span>
+              <div class="social">
+                <a href=""><i class="bi bi-twitter"></i></a>
+                <a href=""><i class="bi bi-facebook"></i></a>
+                <a href=""><i class="bi bi-instagram"></i></a>
+                <a href=""><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="member" data-aos="fade-up" data-aos-delay="200">
+              <div class="pic"><img src="assets/img/team-2.jpg" alt=""></div>
+              <h4>Sarah Jhinson</h4>
+              <span>Product Manager</span>
+              <div class="social">
+                <a href=""><i class="bi bi-twitter"></i></a>
+                <a href=""><i class="bi bi-facebook"></i></a>
+                <a href=""><i class="bi bi-instagram"></i></a>
+                <a href=""><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="member" data-aos="fade-up" data-aos-delay="300">
+              <div class="pic"><img src="assets/img/team-3.jpg" alt=""></div>
+              <h4>William Anderson</h4>
+              <span>CTO</span>
+              <div class="social">
+                <a href=""><i class="bi bi-twitter"></i></a>
+                <a href=""><i class="bi bi-facebook"></i></a>
+                <a href=""><i class="bi bi-instagram"></i></a>
+                <a href=""><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="member" data-aos="fade-up" data-aos-delay="400">
+              <div class="pic"><img src="assets/img/team-4.jpg" alt=""></div>
+              <h4>Amanda Jepson</h4>
+              <span>Accountant</span>
+              <div class="social">
+                <a href=""><i class="bi bi-twitter"></i></a>
+                <a href=""><i class="bi bi-facebook"></i></a>
+                <a href=""><i class="bi bi-instagram"></i></a>
+                <a href=""><i class="bi bi-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Team Section -->
+
+
+
+    <section id="keyframe">
+        <div class="container" data-aos="fade-up">
+          <div class="section-header">
+            <h3 class="section-title">Keyframe Extraction</h3>
+            <h4 class="subtitle">Method</h4>
+            <p class="paragraph">
+                A <span style="font-style: italic;">gesture chunk</span> is a continuous segment of frames from the original video data, 
+                capturing the animation of gestures in an active stage. The purpose of keyframe extraction is to represent this animation 
+                using fewer frames. For simplicity, this baseline keyframe extraction focuses solely on the movement of the arms, ignoring 
+                hand movements. Consequently, the landmarks of the wrists (left and right) are critical for selecting keyframes. 
+                At a high level, we aim to disregard frames where the wrist’s position remains nearly unchanged. If the wrist moves from 
+                position <span style="font-style: italic;">a</span> to <span style="font-style: italic;">b</span> along a roughly straight 
+                line, we designate <span style="font-style: italic;">a</span> and <span style="font-style: italic;">b</span> as keyframes 
+                and use linear interpolation to compute all intervening frames. To achieve this, we primarily use the velocity and positions 
+                of the wrists’ landmarks to filter the keyframes. Initially, we identify frames where the wrist velocity is minimal (near zero). 
+                Next, we examine the wrists’ positions for a second round of filtering. After these two stages of filtering on each of the wrist data, 
+                we then union the two sets to extract the keyframe sequence for the given gesture chunk.
+            </p>
+            <h4 class="subtitle">Results</h4>
+            <p class="paragraph">
+                The videos above showcase a result example from our dataset, specifically selected 
+                from original data (MAP014). The scenario shows a student answering the question: 
+                <i>Are the lengths of the two diagonals of a rectangle the same?</i> In the first half of 
+                the video, the student keep raising his arms to represent a rectangle. In the second 
+                half, he swings his upper arms back and forth 8 times to depict the diagonals of the 
+                rectangle. Video.1, created from the original data, contains 129 frames. It can be 
+                clearly seen the student’s whole body micro-movements even though he remains in a fixed position. 
+
+                Video.2 is constructed from 15 extracted keyframes generated by our algorithm, which selects 
+                frames 0, 5, 7, 13, 70, 75, 93, 99, 100, 103, 107, 109, 121, 124, and 128 as keyframes. 
+                By employing linear interpolation, we reconstruct the other frames. This video utilizes 
+                normalized data, where landmarks have been transformed to the fixed shoulder coordinate 
+                system, significantly reducing noise from whole body micro-movements. This keyframe 
+                extraction process not only reduces the number of frames needed to represent the gesture 
+                chunk but also further minimizes noise from micro-movements. For this dataset, the current 
+                keyframe extraction algorithm is estimated to extract keyframes amounting to 10% to 20% of 
+                the total number of original frames.
+            </p>
+
+            <div class="video-container">
+                <div class="video-box">
+                    <video controls>
+                        <source src="assets/video/PRE.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="v_description">
+                        <span><b>Video.1 </b></span> Made from 129 original frames.
+                    </p>
+                </div>
+                <div class="video-box">
+                    <video controls>
+                        <source src="assets/video/KEY.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <p class="v_description">
+                        <span><b>Video.2 </b></span> Made from 15 extracted keyframes.
+                    </p>
+                </div>
+            </div>
+
+            
+            </p>
+            <h4 class="subtitle">Limitations</h4>
+            <p class="paragraph">
+                The baseline algorithm performs adequately for arm-based gestures, as demonstrated by the results provided. However, 
+                several potential limitations exist: 1) The algorithm may not effectively track tracing-based gestures, such as a 
+                student using their index finger to draw a circle in the air. 2) It does not account for hand gestures, focusing only 
+                on arm movements. 3) Linear interpolation may not accurately represent the arc-like movements of the wrists. 4) The issue 
+                of feature normalization, particularly how to handle the time gap between each pair of keyframes, remains unexplored. Overall, 
+                there are several aspects of this baseline algorithm that could be improved to enhance the robustness of keyframe feature 
+                extraction and its suitability for addressing high-level questions.
+            </p>
+          </div>
+        </div>
+      </section>
+
+
+
+    <!-- ======= Conclusion Section ======= -->
+    <section id="conclusion">
+      <div class="container">
+        <div class="section-header">
+          <h3 class="section-title">Conclusion</h3>
+          <h4 class="subtitle">Summary</h4>
+            <p class="paragraph">
+                In our exploratory data analysis of a portion of the dataset, we focused primarily on the 
+                landmarks of shoulders, elbows, and wrists. We have successfully demonstrated the feasibility 
+                of transforming these landmarks into a fixed-shoulder coordinate system, which allows for 
+                normalization across varying participant-screen distances. Additionally, we discovered that the 
+                relative heights of the elbow and wrist serve as effective predictors for distinguishing 
+                between ‘idle’ and ‘active’ stages of movement. We introduced the concept of a ‘gesture chunk’ as 
+                our unit of analysis, which contains a section of continuous frames within an ‘active’ stage. 
+                To support this framework, we developed a baseline algorithm that constructs the fields of the 
+                gesture chunk structure: segmentation, hand gesture detection, and keyframe extraction. 
+                These components collectively form the feature layer for the dataset, paving the way for 
+                further analysis and model development.
+            </p>
+            <h4 class="subtitle">Future Directions</h4>
+            <p class="paragraph">
+                Looking ahead, our efforts will focus on two primary objectives. The first is to enhance 
+                the robustness and applicability of the current baseline algorithm for constructing a deep 
+                learning model. This includes making the segmentation algorithm more capable of incorporating 
+                states of low wrist activity and refining the hand gesture detection model to improve accuracy 
+                across a broader range of hand gestures. Additionally, we aim to advance keyframe extraction 
+                techniques to better handle tracing-based gestures and integrate these improvements with hand 
+                gesture detection. Another goal is to expand our analytical framework by including additional 
+                variables that will make the gesture chunk structure more relevant for our analysis. The second 
+                objective involves developing models for both unsupervised learning, such as clustering, 
+                and supervised learning, which will require a more extensive labeled dataset. These models are 
+                intended to aid in the identification of high-level abstract gestures, marking a significant step 
+                towards achieving our ultimate goal.
+                </p>
+
+        </div>
+      </div>
+
+      <!-- Uncomment below if you wan to use dynamic maps -->
+      <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22864.11283411948!2d-73.96468908098944!3d40.630720240038435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew+York%2C+NY%2C+USA!5e0!3m2!1sen!2sbg!4v1540447494452" width="100%" height="380" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+      <div class="container mt-5">
+        <div class="row justify-content-center">
+
+          <div class="col-lg-3 col-md-4">
+
+            <div class="info">
+              <div>
+                <i class="bi bi-geo-alt"></i>
+                <p>A108 Adam Street<br>New York, NY 535022</p>
+              </div>
+
+              <div>
+                <i class="bi bi-envelope"></i>
+                <p>info@example.com</p>
+              </div>
+
+              <div>
+                <i class="bi bi-phone"></i>
+                <p>+1 5589 55488 55s</p>
+              </div>
+            </div>
+
+            <div class="social-links">
+              <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+              <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+              <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+            </div>
+
+          </div>
+
+          <div class="col-lg-5 col-md-8">
+            <div class="form">
+              <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                <div class="form-group">
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group mt-3">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group mt-3">
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                </div>
+                <div class="form-group mt-3">
+                  <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+                </div>
+                <div class="my-3">
+                  <div class="loading">Loading</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message">Your message has been sent. Thank you!</div>
+                </div>
+                <div class="text-center"><button type="submit">Send Message</button></div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>End Contact Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong>Regna</strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!--
+        All the links in the footer should remain intact.
+        You can delete the links only if you purchased the pro version.
+        Licensing information: https://bootstrapmade.com/license/
+        Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Regna
+      -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
+    </div>
+  </footer>
+  <!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
 
 </body>
+
 </html>
