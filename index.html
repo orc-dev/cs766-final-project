@@ -112,9 +112,7 @@
                 <p class="description" style="color:#333;">This webpage was created by slightly modifying the
                      <a href="https://bootstrapmade.com/regna-bootstrap-onepage-template/#download">Regna Bootstrap Theme</a> from BOOTSTRAPMADE.
                     Image (Right) courtesy of <a href="https://news.mit.edu/2023/when-computer-vision-works-like-human-brain-0630" target="_blank">MIT News</a>.</p>
-                
               </div>
-  
             </div>
   
             <div class="col-lg-6 background order-lg-2 order-1" data-aos="fade-left" data-aos-delay="100"></div>
@@ -258,17 +256,97 @@
             <h3 class="section-title">Segmentation</h3>
             <h4 class="subtitle">Method</h4>
             <p class="paragraph">
-                Todo...Introduce methods for segmentation
-            </p>
-            <h4 class="subtitle">Results</h4>
-            <p class="paragraph">
-                Todo...Display results.
+                Temporal segmentation serves as a vital preprocessing step in various analytical tasks, including 
+                key frame extraction and gesture recognition. While existing literature presents diverse segmentation 
+                techniques tailored to specific data formats, not all are compatible with our current dataset. 
+                After thorough review, we identified several studies that, with modifications, align closely with our 
+                project objectives.
+
+                In [2], [3], and [4], Support Vector Machine (SVM) classifiers were utilized to distinguish between 
+                rest and gesture frames. [1], on the other hand, quantified frame movement by summing pixel changes 
+                beyond a certain threshold, employing a heuristic to classify frames accordingly. Additionally, 
+                [5] detected static hand positions and compared them to real-time hand positions at each time point.
+
+                Drawing inspiration from these approaches, we developed a compound algorithm that integrates static 
+                position analysis, relative distance calculation, and local movement quantification. The following
+                 presents a structured overview of our main algorithm, comprising four distinct steps:
             </p>
 
+            <img src="assets/img/segment_img0.png" alt="example" 
+                style="max-height: 500px; width: auto; display: block; margin: 10px auto;">
+            
+            <p class="paragraph"><strong>Algorithm 1: Preliminary Static Positions</strong><br>
+            <b>Input</b>: cell_num, std_data<br>
+            1. Divide each frame into a grid of dimensions cell_num by cell_num and compute the frequency of the left elbow's position within each grid cell.<br>
+            2. Identify the cell with the highest frequency as the static position.<br>
+            3. Determine time periods during which the elbow remains in the static position.<br>
+            <b>Output</b>: static position indicator vector<br>
+            <br>
+            <strong>Algorithm 2: Quantity of Movement Segmentation</strong><br>
+            <b>Input</b>: std_data, delta<br>
+            1. Compute local velocities using the Euclidean norm of body landmark movements over time.<br>
+            2. Calculate the mean and standard deviation of local velocities during preliminary static time periods.<br>
+            3. Set a threshold as mean + delta * standard deviation to classify time periods with velocities below the threshold as rest.<br>
+            <b>Output</b>: rest position indicator vector<br>
+            <br>
+            <strong>Algorithm 3: Elbow Relative Distance Segmentation</strong><br>
+            <b>Input</b>: std_data, delta<br>
+            1. Compute the Euclidean norm from the current elbow position to the static position as the relative distance.<br>
+            2. Determine the mean and standard deviation of relative distances during preliminary static time periods.<br>
+            3. Classify time periods with distances below the threshold of mean + delta * standard deviation as rest.<br>
+            <b>Output</b>: rest position indicator vector<br>
+            <br>
+            <strong>Algorithm 4: Smoothing</strong><br>
+            <b>Input</b>: an indicator vector, L, r<br>
+            1. Employ a sliding window of length L to compute the ratio of 1s in the vicinity of each time point.<br>
+            2. Identify time points where the ratio exceeds r as rest positions.<br>
+            <b>Output</b>: A smoothed indicator vector<br>
+            <br>
+            <strong>Main Algorithm:</strong><br>
+            <b>Input</b>: std_data, L, r, delta, cell_num<br>
+            1. Execute Algorithm 1 to obtain the preliminary static position indicator vector.<br>
+            2. Utilize Algorithms 2 and 3 with appropriate parameters to generate indicator vectors.<br>
+            3. Compute the intersection vector of the indicators 2.<br>
+            4. Apply Algorithm 4 to smooth the intersection vector.<br>
+            <b>Output</b>: The rest time indicator vector<br>
+            </p>
+            
+            <h4 class="subtitle">Results</h4>
+
+            <div class="image-grid">
+                <img src="assets/img/seg_map040.png" alt="map040">
+                <img src="assets/img/seg_map108.png" alt="map108">
+                <img src="assets/img/seg_map064.png" alt="map064">
+                <img src="assets/img/seg_map046.png" alt="map046">
+            </div>
+
+            <p class="paragraph">
+                The four plots above showcase the segmentation results for four randomly selected videos. 
+                In each plot, the dark blue points denote the heights of the left elbow of the object, while the 
+                light blue points represent the heights of the left wrist. Time periods highlighted in yellow 
+                denote segments classified as rest, while the remaining intervals, excluding the initial and final 
+                durations, are categorized as containing gestures.
+                It is important to note that our algorithm is unable to classify time periods devoid of data, 
+                wherein the heights of both the elbow and wrist are recorded as 0. This limitation is consistent 
+                with the constraints discussed in the subsequent section.
             </p>
             <h4 class="subtitle">Limitations</h4>
             <p class="paragraph">
-                Todo...add comments to current algorithms and results.
+                The effectiveness of temporal segmentation in our project is hindered by the inherent challenges 
+                posed by our unlabeled dataset. Originating from raw data sourced from education science research, 
+                our dataset lacks ground truth segmentation labels and remains unfiltered for noise. Consequently, 
+                assessing the accuracy of our segmentation relies primarily on subjective evaluation through visual 
+                inspection or manual labeling, both of which are labor-intensive tasks. Regrettably, resource constraints 
+                prevent us from annotating the entire dataset comprehensively. Thus, the parameters utilized in our 
+                algorithm are determined empirically through iterative experimentation, as opposed to being optimized 
+                through supervised learning with labeled data.
+                
+                Moreover, our algorithm encounters limitations associated with the quality of the data itself. 
+                Landmarks extracted from MediaPipe exhibit instability, leading to erroneous labeling of certain 
+                landmarks as 0 due to model instability. To mitigate this issue, our algorithm leverages a subset 
+                of the available landmark information. However, instances where location information is unavailable 
+                pose a significant challenge, and our algorithm lacks the capability to discern between rest and 
+                gesture during these timepoints.
             </p>
           </div>
         </div>
@@ -419,19 +497,41 @@
       </div>
     </section>
 
-    <section id="reference" style="margin-bottom: 20%;">
+    <section id="reference" style="margin-bottom: 5%;">
         <div class="container" data-aos="fade-up">
           <div class="section-header">
             <h3 class="section-title">Reference</h3>
-            
+            <br>
             <p style="color:#333;">
-                Abrahamsen, D., Nathan, M. J., Williams-Pierce, C., Walkington, C., Ottmar, E. R., Soto, H., & Alibali, M. W. (2020). 
+                [0] Abrahamsen, D., Nathan, M. J., Williams-Pierce, C., Walkington, C., Ottmar, E. R., Soto, H., & Alibali, M. W. (2020). 
                 <i>The Future of Embodied Design for Mathematics Teaching and Learning</i>. Frontiers in Education, STEM Education. 
                 Retrieved from <a href="https://doi.org/10.3389/feduc.2020.00147" target="_blank">https://doi.org/10.3389/feduc.2020.00147</a>
             </p>
-
-
-
+            <p style="color:#333;">
+                [1] Jiang, Feng, et al. (2015). 
+                <i>Multi-layered gesture recognition with Kinect</i>. J. Mach. Learn. Res., 16(1), 227-254. 
+                Retrieved from <a href="https://doi.org/yourDOIhere" target="_blank">https://doi.org/yourDOIhere</a>
+            </p>
+            <p style="color:#333;">
+                [2] Ramakrishnan, Ajay Sundar, and Michael Neff. (2013). 
+                <i>Segmentation of hand gestures using motion capture data</i>. Proceedings of the 2013 international conference on Autonomous agents and multi-agent systems. 
+                Retrieved from <a href="https://doi.org/yourDOIhere" target="_blank">https://doi.org/yourDOIhere</a>
+            </p>
+            <p style="color:#333;">
+                [3] Madeo, Renata CB, Clodoaldo AM Lima, and Sarajane M. Peres. (2013). 
+                <i>Gesture unit segmentation using support vector machines: segmenting gestures from rest positions</i>. Proceedings of the 28th Annual ACM Symposium on Applied Computing. 
+                Retrieved from <a href="https://doi.org/yourDOIhere" target="_blank">https://doi.org/yourDOIhere</a>
+            </p>
+            <p style="color:#333;">
+                [4] Madeo, Renata Cristina Barros, Sarajane Marques Peres, and Clodoaldo Aparecido de Moraes Lima. (2016). 
+                <i>Gesture phase segmentation using support vector machines</i>. Expert Systems with Applications, 56, 100-115. 
+                Retrieved from <a href="https://doi.org/yourDOIhere" target="_blank">https://doi.org/yourDOIhere</a>
+            </p>
+            <p style="color:#333;">
+                [5] Peng, Xiaojiang, et al. (2014). 
+                <i>Action and gesture temporal spotting with super vector representation</i>. European Conference on Computer Vision. Cham: Springer International Publishing. 
+                Retrieved from <a href="https://doi.org/yourDOIhere" target="_blank">https://doi.org/yourDOIhere</a>
+            </p>
           </div>
         </div>
       </section>

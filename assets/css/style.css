@@ -1209,3 +1209,16 @@ video {
     margin-bottom: 3%;
 }
 
+.image-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns of equal size */
+    grid-gap: 10px; /* Space between images */
+    width: 90%; /* Adjust width as needed */
+    margin: auto; /* Center the grid on the page */
+}
+/* Image styling */
+.image-grid img {
+    width: 100%; /* Makes image fill the container */
+    height: auto; /* Keeps image aspect ratio */
+}
+
