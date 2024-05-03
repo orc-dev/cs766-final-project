@@ -499,7 +499,7 @@ section {
 .subtitle {
     font-size: 24px;
     color: #87bbaa;
-    text-transform: capitalize;
+    text-transform: none;
     text-align: left;
     font-weight: 500;
     margin-bottom: 5px;
@@ -1198,3 +1198,14 @@ video {
     text-align: center; /* Center-aligns the text */
     padding-top: 5px; /* Space above the description */
 }
+
+.image-container {
+    display: flex;
+    justify-content: center; /* Center the images horizontally */
+    align-items: center; /* Center the images vertically */
+    gap: 20px; /* Space between images */
+    max-width: 98%; /* Maximum width of the container */
+    margin: auto; /* Center the container on the page */
+    margin-bottom: 3%;
+}
+
