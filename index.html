@@ -190,12 +190,62 @@
             </p>
 
             <h4 class="subtitle">Insights from Data Exploration of the Shoulder, Elbow, and Wrist</h4>
-            <p class="paragraph">todo</p>
+            <p class="paragraph">
+                MediaPipe has identified over 100 landmarks in our dataset; however, we are primarily interested in 
+                a relatively small subset of these landmarks. The experimental setup involves participants standing 
+                alone in a fixed position, facing the camera, and performing gestures. We observed that in less than 
+                2% of the cases, participants turn their bodies or bend down. Consequently, we have chosen to disregard 
+                these non-standing frames and focus solely on those where the participant is standing and facing the 
+                camera. We found that the most informative movements are expressed through the arms and hands. Based 
+                on these observations, we have anchored the shoulder landmarks at two fixed points and normalized the 
+                remaining data to this fixed-shoulder coordinate system. Testing shows that this normalization 
+                significantly reduces noise caused by subtle whole-body movements. Additionally, it minimizes 
+                variations in participant distance from the camera, allowing for a more consistent comparison of arm 
+                movements across different participants.
+            </p>
+            <img src="assets/img/MAP014_elbow_wrist_landmarks.png" alt="example" 
+                style="max-height: 500px; width: auto; display: block; margin: 10px auto;">
+            <p class="paragraph">
+                One observation from our study is that participants tend to alternate between ‘idle’ and ‘active’ stages. 
+                During ‘idle’ stages, participants generally stand alone in a relaxed manner, either reading the prompt 
+                or contemplating, with minimal gestural activity. In contrast, the ‘active’ stages are marked by an increase 
+                in gestures as participants engage in solving math problems. This segmentation effectively serves as 
+                a ‘separator’, allowing us to transform the continuous video stream into discrete units that capture the 
+                phases we’re most interested in. Further analysis of the elbow and wrist landmarks illuminates the distinction 
+                between these two stages. The image above includes a plot visualizing the frequency of elbow and wrist 
+                landmarks: the two yellow dots represent fixed shoulder positions, light blue and red dots indicate elbow 
+                landmarks, and dark blue and red dots represent wrist landmarks. Clearly, there is a discernible pattern in 
+                the distribution of elbow and wrist data. A useful heuristic insight is that the relative heights of the wrist 
+                and elbow can help identify the stages: in the ‘idle’ stage, the wrist typically appears lower than the elbow, 
+                whereas in the ‘active’ stage, the wrist tends to be higher. This data exploration has led us to propose the 
+                concept of a ‘gesture chunk’ as the unit of analysis, which we will introduce in the following section.
+            </p>
+
 
             <h4 class="subtitle">'Gesture Chunk' as a New Unit of Analysis in Abstraction</h4>
-            <p class="paragraph">todo</p>
+            <p class="paragraph">
+                In our exploratory data analysis, we introduce the concept of a ‘gesture chunk’ as the unit of 
+                analysis for this dataset. Observations show that students alternate between ‘idle’ and ‘active’ 
+                states during video recordings. We define a gesture chunk as a segment of body movement occurring 
+                during an active state, making it a distinguishable and countable unit that comprises a continuous 
+                section of frames within the original video.
 
-        
+                To facilitate our analysis, we propose constructing feature fields within the gesture chunk structure. 
+                The first feature involves segmentation: identifying each ‘idle’ and ‘active’ state to determine the 
+                bounding frames for each gesture chunk. This segmentation allows us to pinpoint all gesture chunks 
+                in a video file. Additionally, we can compute segment-related features such as the starting frame 
+                ID, starting timestamp, ending frame ID, ending timestamp, and duration.
+                
+                To simplify our feature engineering process, we separate the analysis of hand gestures from arm 
+                gestures. For hand gesture detection, the second type of feature, we plan to utilize existing models 
+                to identify the gestures of each hand in every frame of a gesture chunk.
+                
+                The final feature we focus on is keyframe extraction, akin to the reverse process of creating an 
+                animation by setting keyframes. This feature involves selecting a subset of frames within a gesture 
+                chunk, primarily focusing on the motion of the wrist landmarks. Although additional features may be 
+                considered in future developments, in this project, our focus is strictly on establishing baseline 
+                algorithms for segmentation, hand gesture detection, and keyframe extraction.
+            </p>
         </div>
       </div>
     </section>
