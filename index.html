@@ -277,7 +277,8 @@
             
             <p class="paragraph"><strong>Algorithm 1: Preliminary Static Positions</strong><br>
             <b>Input</b>: cell_num, std_data<br>
-            1. Divide each frame into a grid of dimensions cell_num by cell_num and compute the frequency of the left elbow's position within each grid cell.<br>
+            1. Divide each frame into a grid of dimensions cell_num by cell_num and compute the frequency of the left 
+            elbow's position within each grid cell.<br>
             2. Identify the cell with the highest frequency as the static position.<br>
             3. Determine time periods during which the elbow remains in the static position.<br>
             <b>Output</b>: static position indicator vector<br>
@@ -358,20 +359,92 @@
         <div class="container" data-aos="fade-up">
           <div class="section-header">
             <h3 class="section-title">Hand Gesture Detection</h3>
-            <h4 class="subtitle">Method</h4>
+            <h4 class="subtitle">Reason</h4>
             <p class="paragraph">
-                Todo...Introduce methods
-            </p>
-            <h4 class="subtitle">Results</h4>
-            <p class="paragraph">
-                Todo...Display results
+                Since we want to extract the active gesture chunk, the gesture detection of the video can be a 
+                useful tool for help. We plan to train a gesture detection model and then use it to detect if 
+                there is any gesture showing up in the video. If some gesture detected is in our target gesture 
+                class, we can safely assume that this period in the video where the gesture is detected is an 
+                active gesture chunk.
             </p>
 
-            </p>
-            <h4 class="subtitle">Limitations</h4>
+            <h4 class="subtitle">Method</h4>
             <p class="paragraph">
-                Todo...add comments to current algorithms and results.
+                We have seen in previous tasks of hand detection using Mediapipe. We will continuously use Mediapipe 
+                for gesture recognition. We first cut the video into multiple frames.
+                <br><br>
+                <img src="assets/img/1.png" alt="example" 
+                style="max-height: 500px; width: auto; display: block; margin: 10px auto;">
+
+                And use hand detection to get the min and max x,y coordinates of the hand key point of hand which 
+                forms a bounding box of hand and then crop out this region with some margin error. 
+                <br><br>
+                <img src="assets/img/2.png" alt="example" 
+                style="max-height: 500px; width: auto; display: block; margin: 10px auto;">
+
+                Then, we save this cropped part in a directory. Then, we find some hand gesture detection dataset, 
+                which will be discussed in more detail later in the result part. And then, we use transfer 
+                learning to train a new model in the media pipe maker. Code references its 
+                <a href="https://youtu.be/vODSFXEP-XY?si=Hdd0u3vKnF7kLur-">official tutorial</a>:
+                <br><br>
+                <img src="assets/img/3.png" alt="example" 
+                style="max-height: 500px; width: auto; display: block; margin: 10px auto;">
+
+                Then, we use the trained media pipe model to detect each cropped frame and then output if each 
+                frame has some detected gesture other than empty or none, we put a label on this frame.
+                <img src="assets/img/4.png" alt="example" 
+                style="max-height: 500px; width: auto; display: block; margin: 10px auto;">
+
             </p>
+
+            <h4 class="subtitle">Results and Limitations</h4>
+            <p class="paragraph">
+                Although method is relatively simple and clearly, after we actually deployed this method, we found a lot of 
+                problems. First, because the backbone used by the media pipe is tensorflow, and tensorflow stopped supporting 
+                Windows Operating System a long time ago, we have to train and test on the google colab service. This is a free 
+                Linux platform for training some simple models, thus if we try to load it with a very large dataset, for example, 
+                for the dataset more than 10000 images, it will stop working. If a more advanced platform is provided, 
+                we may provide a better result.
+                <br><br>
+                Second, we find out that, crop out hand from each frame for detection can cause problem, due to the low quality 
+                of video itself. Some hand will not be detected by the hand detection pretrained model provided by 
+                official site, but it’s gesture will be detected directly from our trained model. Thus, we give up cropping 
+                first and then detect. We directly use each frame for detection until we have a high quality video.
+
+                Due to such limitations, we only include 4 classes+1 none class. They are:fist, like(thumb in ppt), 
+                one(indexing in ppt), palm. The dataset we used is a light version of HaGRID 
+                (<a href="https://github.com/hukenovs/hagrid">HAnd Gesture Recognition 
+                    Image Dataset</a>), to be more precise is ”hagrid-sample-30k-384p”, 
+                combining with official rock_paper_scissors dataset(you can get it from the official tutorial video above. 
+                We do a few tests of training, with different parameters and dataset and get different results. For either 
+                type of dataset combination we choose, we use a simple version of cross validation. We put 80% of the dataset 
+                for training, 10% for validation, and the last 10% for testing. For all of different combinations of dataset, 
+                and different parameter, we have a test accuracy more than 95%:
+                <br><br>
+                <img src="assets/img/5.png" alt="example" 
+                style="max-height: 500px; width: auto; display: block; margin: 10px auto;">
+                <br>
+                However, in reality, when we actually put it in the video to detect it, the results weren't very 
+                promising. We found that without using a hybrid training set, the individual training sets were 
+                heavily biased. For example, even if we use 1400 images for each class from Hagrid Dataset for training, 
+                the result in multiple cases is worse than using 200 images from Hagrid Dataset and 125 from Official 
+                dataset after training in the same epoch. This might be caused by the quality of the dataset itself. 
+                For example, for frame 728 and following, it should obviously be palm instead of like. 
+                <br><br>
+                <img src="assets/img/6.png" alt="example" 
+                style="max-height: 500px; width: auto; display: block; margin: 10px auto;">
+                
+                All the different parameter pre-trained models are provided on github, and you are welcome to 
+                test those models, but “gesture 200dataHagrid100Official 10 epoch.task” is a recommended model. 
+                Some other limitations are the light-weighted Media Pipe model itself. The only parameter allowed 
+                to be changed is epoch and batch size along with the numbers of fully connected layers and its 
+                active layers. No other architecture is provided for further fine tuning. We have two further directions,
+                first seeking high quality video. Current video has such low resolution that in many frames, hands 
+                are blurred and hard to detect. Second, train a better model. Find more dataset and try to combine 
+                those dataset so we can limit the bias to as small as possible. Moreover, find a better model 
+                structure and a better platform to train it.
+            </p>
+
           </div>
         </div>
     </section>
@@ -514,12 +587,14 @@
             </p>
             <p style="color:#333;">
                 [2] Ramakrishnan, Ajay Sundar, and Michael Neff. (2013). 
-                <i>Segmentation of hand gestures using motion capture data</i>. Proceedings of the 2013 international conference on Autonomous agents and multi-agent systems. 
+                <i>Segmentation of hand gestures using motion capture data</i>. Proceedings of the 2013 international conference 
+                on Autonomous agents and multi-agent systems. 
                 Retrieved from <a href="https://doi.org/yourDOIhere" target="_blank">https://doi.org/yourDOIhere</a>
             </p>
             <p style="color:#333;">
                 [3] Madeo, Renata CB, Clodoaldo AM Lima, and Sarajane M. Peres. (2013). 
-                <i>Gesture unit segmentation using support vector machines: segmenting gestures from rest positions</i>. Proceedings of the 28th Annual ACM Symposium on Applied Computing. 
+                <i>Gesture unit segmentation using support vector machines: segmenting gestures from rest positions</i>. 
+                Proceedings of the 28th Annual ACM Symposium on Applied Computing. 
                 Retrieved from <a href="https://doi.org/yourDOIhere" target="_blank">https://doi.org/yourDOIhere</a>
             </p>
             <p style="color:#333;">
@@ -529,7 +604,8 @@
             </p>
             <p style="color:#333;">
                 [5] Peng, Xiaojiang, et al. (2014). 
-                <i>Action and gesture temporal spotting with super vector representation</i>. European Conference on Computer Vision. Cham: Springer International Publishing. 
+                <i>Action and gesture temporal spotting with super vector representation</i>. European Conference 
+                on Computer Vision. Cham: Springer International Publishing. 
                 Retrieved from <a href="https://doi.org/yourDOIhere" target="_blank">https://doi.org/yourDOIhere</a>
             </p>
           </div>
