@@ -2,7 +2,7 @@
 
 ### Project Description
 **Course Project**
-- This webpage serves as the project report for the "COMP SCI/ECE 766 COMPUTER VISION" course offered at UW Madison during the Spring 2024 semester. The course is instructed by Pedro Morgado. In this project, we are focusing on conducting exploratory data analysis and establishing some baseline feature engineering for a dataset related to video data in educational psychology research.
+- This repository contains final project codebase for the "COMP SCI/ECE 766 COMPUTER VISION" course offered at UW Madison during the Spring 2024 semester. The course is instructed by Pedro Morgado. In this project, we are focusing on conducting exploratory data analysis and establishing some baseline feature engineering for a dataset related to video data in educational psychology research.
 
 **Teams**
 - **Team Name:** DKHTNI
